@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tienda Online - Inicio</title>
+    <style>
+        .producto {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .producto img {
+            max-width: 200px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a la Tienda Online</h1>
+    <h2>Productos Destacados</h2>
+    
+    {% for product in products %}
+        <div class="producto">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <p>Precio: ${{ product.price }}</p>
+            <p>Stock: {{ product.stock }}</p>
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% else %}
+                <p>Sin imagen</p>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No hay productos disponibles.</p>
+    {% endfor %}
+</body>
+</html>
